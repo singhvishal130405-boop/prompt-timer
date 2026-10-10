@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Prompt Timer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body data-site="claude">
+  <header>
+    <h1>Prompt Timer</h1>
+    <p>Save a prompt, pick a time, and it sends itself.</p>
+    <div class="pill" id="sitePill">Sending to Claude</div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="prompts" role="tab">Prompts</button>
+    <button class="tab" data-tab="schedule" role="tab">Schedule</button>
+    <button class="tab" data-tab="queue" role="tab">Queue <span id="queueCount" class="count">0</span></button>
+  </nav>
+
+  <main>
+    <!-- PROMPTS -->
+    <section id="tab-prompts" class="panel active">
+      <div class="form">
+        <label for="pTitle">Title</label>
+        <input id="pTitle" type="text" maxlength="60" placeholder="e.g. Morning code review">
+        <label for="pText">Prompt</label>
+        <textarea id="pText" rows="4" placeholder="Write the prompt you want to reuse"></textarea>
+        <button id="savePrompt" class="btn primary">Save prompt</button>
+      </div>
+      <div id="promptList" class="list"></div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section id="tab-schedule" class="panel">
+      <div class="form">
+        <label for="schedPrompt">Prompt</label>
+        <select id="schedPrompt"></select>
+
+        <label for="schedSite">Send to</label>
+        <select id="schedSite">
+          <option value="claude">Claude (claude.ai)</option>
+          <option value="chatgpt">ChatGPT (chatgpt.com)</option>
+          <option value="gemini">Gemini (gemini.google.com)</option>
+        </select>
+
+        <label for="schedWhen">Send at</label>
+        <input id="schedWhen" type="datetime-local">
+        <div class="chips">
+          <button class="chip" data-hours="1">in 1 h</button>
+          <button class="chip" data-hours="3">in 3 h</button>
+          <button class="chip" data-hours="5">in 5 h</button>
+        </div>
+
+        <label class="check">
+          <input id="schedNew" type="checkbox" checked>
+          Start a new chat before sending
+        </label>
+
+        <button id="addSchedule" class="btn primary">Schedule prompt</button>
+        <p class="hint">Chrome must be open and you must be logged in to the site at that time.</p>
+      </div>
+    </section>
+
+    <!-- QUEUE -->
+    <section id="tab-queue" class="panel">
+      <div id="queueList" class="list"></div>
+      <button id="clearDone" class="btn ghost small">Clear finished</button>
+    </section>
+  </main>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="popup.js"></script>
+</body>
+</html>

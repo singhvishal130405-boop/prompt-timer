@@ -1,0 +1,24 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Dependencies and build output (none yet, but keeps future work clean)
+node_modules/
+dist/
+build/
+
+# Packaged builds belong in GitHub Releases, not in the repo
+*.zip
+*.crx
+*.pem
+
+# Logs and secrets
+*.log
+.env
+.env.*
