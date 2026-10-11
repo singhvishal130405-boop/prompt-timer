@@ -194,8 +194,7 @@ Ideas and bug reports are welcome in the [issue tracker](https://github.com/sing
 
 ## Development note
 
-This project was designed and tested by me with assistance from Claude (Anthropic) for
-code generation and documentation. I tested it on all three supported sites and maintain it.
+I designed, wrote, trained and tested this project myself. I used AI for code reviews, debugging, fixing syntax errors and drafting parts of the documentation.
 
 ## Contributing
 
